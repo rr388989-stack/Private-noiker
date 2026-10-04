@@ -93,11 +93,21 @@ async def handle_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await msg.edit_text("Something went wrong:\n" + str(e))
 
 def main():
+    import asyncio
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT, handle_link))
     print("Private Terabox Bot started successfully!")
-    app.run_polling()
+    
+    async def run():
+        await app.initialize()
+        await app.start()
+        await app.updater.start_polling()
+        # Keep running
+        while True:
+            await asyncio.sleep(3600)
+    
+    asyncio.run(run())
 
 if __name__ == "__main__":
     main()
