@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes, CommandHandler
 from TeraboxDL import TeraboxDL
 
-BOT_TOKEN = "8378452706:AAF68D6qp4BJSSSNCEB4LKZHTsiNausRdfA"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 OWNER_ID = 8509316210
 TERABOX_COOKIE = "lang=en; ndus=Y4ujXe3teHuihU7lpERWF6pE3a7qdk9yziEvSBFj"
 MAX_DOWNLOAD_SIZE_MB = 45
